@@ -16,3 +16,7 @@ function getHumanChoice() {
     return getHumanChoice();
   }
 }
+
+let humanScore = 0;
+let ComputerChoice = 0;
+
