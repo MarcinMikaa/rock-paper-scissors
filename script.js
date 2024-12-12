@@ -1,53 +1,114 @@
+let playerScoreCount = 0;
+let computerScoreCount = 0;
+let roundWinner = '';
+
+const btnRock = document.querySelector('#rockBtn');
+const btnPaper = document.querySelector('#paperBtn');
+const btnScissors = document.querySelector('#scissorsBtn');
+const btnRestart = document.querySelector('#restartBtn');
+
+const playerChoiceDisplay = document.querySelector('#playerRoundResult');
+const computerChoiceDisplay = document.querySelector('#computerRoundResult');
+
+const playerScoreDisplay = document.querySelector('#playerScoreCount');
+const computerScoreDisplay = document.querySelector('#computerScoreCount');
+
+const roundResultMessage = document.querySelector('#roundMessage');
+const finalMessageDisplay = document.querySelector('#finalMessage');
+
+btnRock.addEventListener('click', () => handlePlayerChoice('rock'));
+btnPaper.addEventListener('click', () => handlePlayerChoice('paper'));
+btnScissors.addEventListener('click', () => handlePlayerChoice('scissors'));
+btnRestart.addEventListener('click', () => resetGame());
+
+function executeRound(playerChoice, computerChoice) {
+  roundWinner = determineWinner(playerChoice, computerChoice);
+  updateRoundChoices(playerChoice, computerChoice);
+  updateRoundMessage();
+  refreshScoreDisplay();
+  checkGameOver();
+}
+
 function getRandomElement(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-function getComputerChoice() {
+function generateComputerChoice() {
   const computerChoices = ['rock', 'paper', 'scissors'];
   return getRandomElement(computerChoices);
 }
 
-function getHumanChoice() {
-  const humanChoice = prompt('Please enter your choice: rock, paper or scissors').toLowerCase();
-  if (['rock', 'paper', 'scissors'].includes(humanChoice)) {
-    return humanChoice;
+function handlePlayerChoice(playerSelection) {
+  const computerSelection = generateComputerChoice();
+  executeRound(playerSelection, computerSelection);
+}
+
+function determineWinner(player, computer) {
+  const winConditions = {
+    rock: 'scissors',
+    paper: 'rock',
+    scissors: 'paper',
+  };
+
+  if (player === computer) {
+    return 'draw';
+  } else if (winConditions[player] === computer) {
+    playerScoreCount++;
+    return 'player';
   } else {
-    alert('Invalid choice, please try again.');
-    return getHumanChoice();
+    computerScoreCount++;
+    return 'computer';
   }
 }
 
-function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
-
-  function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) {
-      console.log('Draw!');
-    } else if (
-      (humanChoice == 'rock' && computerChoice == 'scissors') ||
-      (humanChoice == 'paper' && computerChoice == 'rock') ||
-      (humanChoice == 'scissors' && computerChoice == 'paper')
-    ) {
-      console.log(`You win! ${humanChoice} beats ${computerChoice} `);
-      humanScore++;
-    } else {
-      console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-      computerScore++;
-    }
-  }
-
-  for (let i = 0; i < 5; i++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-  }
-  console.log(`Final Scores - Human: ${humanScore}, Computer: ${computerScore}`);
-  if (humanScore > computerScore) {
-    console.log('Congratulations! You are the overall winner!');
-  } else if (computerScore > humanScore) {
-    console.log('Sorry, the computer win this time.');
-  }
+function updateRoundChoices(player, computer) {
+  playerChoiceDisplay.textContent = `Player: ${player}`;
+  computerChoiceDisplay.textContent = `Computer: ${computer}`;
 }
 
-playGame();
+function updateRoundMessage() {
+  const messages = {
+    player: 'Player win!',
+    computer: 'Computer win!',
+    draw: "It's draw!",
+  };
+
+  roundResultMessage.textContent = messages[roundWinner];
+}
+
+function refreshScoreDisplay() {
+  playerScoreDisplay.textContent = 'Player: ' + playerScoreCount;
+  computerScoreDisplay.textContent = 'Computer: ' + computerScoreCount;
+}
+
+function checkGameOver() {
+  let scoreLimit = 5;
+  if (playerScoreCount === scoreLimit || computerScoreCount === scoreLimit) {
+    finalMessage();
+    return true;
+  }
+  return false;
+}
+
+function resetGame() {
+  playerScoreCount = 0;
+  computerScoreCount = 0;
+  roundWinner = '';
+  playerChoiceDisplay.textContent = 'Player: ';
+  computerChoiceDisplay.textContent = 'Computer: ';
+  roundResultMessage.textContent = 'Let the game begin!';
+  finalMessageDisplay.textContent = '';
+  finalMessageDisplay.classList.add('hidden');
+  refreshScoreDisplay();
+}
+
+function finalMessage() {
+  let message;
+  if (playerScoreCount > computerScoreCount) {
+    message = `Final Scores - Human: ${playerScoreCount}, Computer: ${computerScoreCount} \n Congratulations! You are the overall winner!`;
+  } else if (computerScoreCount > playerScoreCount) {
+    message = `Final Scores - Human: ${playerScoreCount}, Computer: ${computerScoreCount} \n Sorry, the computer win this time.`;
+  }
+  finalMessageDisplay.textContent = message;
+  finalMessageDisplay.classList.remove('hidden');
+}

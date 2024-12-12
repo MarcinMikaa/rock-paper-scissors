@@ -3,8 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="script.js"></script>
+
     <title>Rock Paper Scissors</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1>Rock Paper Scissors</h1>
+    </header>
+
+    <section id="gameInfo">
+      <div id="actualScores">
+        <p id="playerScoreCount">Player: 0</p>
+        <p id="computerScoreCount">Computer: 0</p>
+      </div>
+      <h2 id="roundMessage">Let's Play!</h2>
+    </section>
+
+    <section id="gameControls">
+      <div id="resultOfRound">
+        <p id="playerRoundResult">Player: ?</p>
+        <p id="computerRoundResult">Computer: ?</p>
+      </div>
+
+      <div id="buttons">
+        <button id="rockBtn">Rock</button>
+        <button id="paperBtn">Paper</button>
+        <button id="scissorsBtn">Scissors</button>
+      </div>
+
+      <button id="restartBtn">Restart Game</button>
+    </section>
+
+    <section id="finalMessageSection" class="hidden">
+      <p id="finalMessage"></p>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
 </html>
