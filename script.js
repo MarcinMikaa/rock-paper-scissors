@@ -62,8 +62,8 @@ function determineWinner(player, computer) {
 }
 
 function updateRoundChoices(player, computer) {
-  playerChoiceDisplay.textContent = `Player: ${player}`;
-  computerChoiceDisplay.textContent = `Computer: ${computer}`;
+  playerChoiceDisplay.textContent = player;
+  computerChoiceDisplay.textContent = computer;
 }
 
 function updateRoundMessage() {
@@ -85,6 +85,7 @@ function checkGameOver() {
   let scoreLimit = 5;
   if (playerScoreCount === scoreLimit || computerScoreCount === scoreLimit) {
     finalMessage();
+    disableGameButtons();
     return true;
   }
   return false;
@@ -94,12 +95,25 @@ function resetGame() {
   playerScoreCount = 0;
   computerScoreCount = 0;
   roundWinner = '';
-  playerChoiceDisplay.textContent = 'Player: ';
-  computerChoiceDisplay.textContent = 'Computer: ';
+  playerChoiceDisplay.textContent = '❔';
+  computerChoiceDisplay.textContent = '❔';
   roundResultMessage.textContent = 'Let the game begin!';
   finalMessageDisplay.textContent = '';
   finalMessageDisplay.classList.add('hidden');
+  enableGameButtons();
   refreshScoreDisplay();
+}
+
+function disableGameButtons() {
+  btnRock.disabled = true;
+  btnPaper.disabled = true;
+  btnScissors.disabled = true;
+}
+
+function enableGameButtons() {
+  btnRock.disabled = false;
+  btnPaper.disabled = false;
+  btnScissors.disabled = false;
 }
 
 function finalMessage() {
@@ -111,4 +125,5 @@ function finalMessage() {
   }
   finalMessageDisplay.textContent = message;
   finalMessageDisplay.classList.remove('hidden');
+  console.log(message);
 }

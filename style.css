@@ -1,3 +1,156 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  background-color: #555;
+  text-align: center;
+  color: white;
+  width: 100%;
+  padding: 40px 0px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin: 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f9;
+  color: #333;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  height: 500px;
+  flex: 1;
+  width: 100%;
+}
+
+#gameInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#gameInfo #actualScores {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  background-color: #1976d2;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#resultOfRound {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 10px auto;
+}
+
+#resultOfRound p {
+  margin: 0;
+  padding: 0 10px;
+  text-align: center;
+}
+
+#gameControls {
+  display: flex;
+  flex-direction: column;
+}
+
 .hidden {
   display: none;
+}
+
+#buttons button {
+  background-color: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
+  margin: 10px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#buttons button:hover {
+  background-color: #1565c0;
+  transform: scale(1.05);
+}
+
+#buttons button:active {
+  transform: scale(1);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+#restartBtn {
+  background-color: #388e3c;
+  color: #fff;
+  font-weight: 800;
+  align-self: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#finalMessageSection {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#finalMessage {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #555;
+  color: #fff;
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 10px;
 }
