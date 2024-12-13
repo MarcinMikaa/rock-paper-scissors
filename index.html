@@ -11,32 +11,34 @@
       <h1>Rock Paper Scissors</h1>
     </header>
 
-    <main class="main">
-      <div id="gameInfo">
-        <h1 id="roundMessage">Let's Play!</h1>
-        <div id="resultOfRound">
-          <p id="playerRoundResult">❔</p>
-          <p id="computerRoundResult">❔</p>
+    <main>
+      <div id="gameContainer">
+        <div id="gameInfo">
+          <h1 id="roundMessage">Let's Play!</h1>
+          <div id="resultOfRound">
+            <p id="playerRoundResult">❔</p>
+            <p id="computerRoundResult">❔</p>
+          </div>
+
+          <div id="actualScores">
+            <p id="playerScoreCount">Player: 0</p>
+            <p id="computerScoreCount">Computer: 0</p>
+          </div>
         </div>
 
-        <div id="actualScores">
-          <p id="playerScoreCount">Player: 0</p>
-          <p id="computerScoreCount">Computer: 0</p>
-        </div>
-      </div>
+        <div id="gameControls">
+          <div id="buttons">
+            <button id="rockBtn">🪨</button>
+            <button id="paperBtn">📜</button>
+            <button id="scissorsBtn">✂️</button>
+          </div>
 
-      <div id="gameControls">
-        <div id="buttons">
-          <button id="rockBtn">🪨</button>
-          <button id="paperBtn">📜</button>
-          <button id="scissorsBtn">✂️</button>
+          <button id="restartBtn">Try again</button>
         </div>
 
-        <button id="restartBtn">Restart</button>
-      </div>
-
-      <div id="finalMessageSection">
-        <p id="finalMessage"></p>
+        <div id="finalMessageSection">
+          <p id="finalMessage"></p>
+        </div>
       </div>
     </main>
 

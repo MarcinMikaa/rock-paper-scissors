@@ -62,8 +62,14 @@ function determineWinner(player, computer) {
 }
 
 function updateRoundChoices(player, computer) {
-  playerChoiceDisplay.textContent = player;
-  computerChoiceDisplay.textContent = computer;
+  const choices = {
+    rock: '🪨',
+    paper: '📜',
+    scissors: '✂️',
+  };
+
+  playerChoiceDisplay.textContent = choices[player] || '❓';
+  computerChoiceDisplay.textContent = choices[computer] || '❓';
 }
 
 function updateRoundMessage() {
@@ -119,9 +125,9 @@ function enableGameButtons() {
 function finalMessage() {
   let message;
   if (playerScoreCount > computerScoreCount) {
-    message = `Final Scores - Human: ${playerScoreCount}, Computer: ${computerScoreCount} \n Congratulations! You are the overall winner!`;
+    message = `Final Scores - Human: ${playerScoreCount}, Computer: ${computerScoreCount} Congratulations! You are the overall winner!`;
   } else if (computerScoreCount > playerScoreCount) {
-    message = `Final Scores - Human: ${playerScoreCount}, Computer: ${computerScoreCount} \n Sorry, the computer win this time.`;
+    message = `Final Scores - Human: ${playerScoreCount}, Computer: ${computerScoreCount} Sorry, the computer win this time.`;
   }
   finalMessageDisplay.textContent = message;
   finalMessageDisplay.classList.remove('hidden');
