@@ -1,3 +1,5 @@
-# rock-paper-scissors
+# Rock Paper Scissors
 
-Simple console rock, paper, scissors game created with JavaScript.
+Rock paper scissors game created with HTML, CSS and JS.
+
+👉 [Live demo](https://marcinmikaa.github.io/rock-paper-scissors/) 👈
