@@ -14,7 +14,7 @@
     <main>
       <div id="gameContainer">
         <div id="gameInfo">
-          <h1 id="roundMessage">Let's Play!</h1>
+          <h2 id="roundMessage">Let's Play!</h2>
           <div id="resultOfRound">
             <p id="playerRoundResult">❔</p>
             <p id="computerRoundResult">❔</p>
@@ -33,11 +33,15 @@
             <button id="scissorsBtn">✂️</button>
           </div>
 
-          <button id="restartBtn">Try again</button>
+          <button id="restartBtn" class="restart-buttons">Try again</button>
         </div>
 
-        <div id="finalMessageSection">
-          <p id="finalMessage"></p>
+        <div id="finalMessageModal" class="hidden">
+          <div id="modalContent">
+            <h2 id="finalMessageTitle"></h2>
+            <p id="finalMessage"></p>
+            <button id="restartBtnModal" class="restart-buttons">Play again</button>
+          </div>
         </div>
       </div>
     </main>
