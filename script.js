@@ -1,3 +1,4 @@
+const SCORE_LIMIT = 5;
 let playerScoreCount = 0;
 let computerScoreCount = 0;
 let roundWinner = '';
@@ -92,8 +93,7 @@ function refreshScoreDisplay() {
 }
 
 function checkGameOver() {
-  let scoreLimit = 5;
-  if (playerScoreCount === scoreLimit || computerScoreCount === scoreLimit) {
+  if (playerScoreCount === SCORE_LIMIT || computerScoreCount === SCORE_LIMIT) {
     finalMessage();
     disableGameButtons();
     return true;
@@ -128,13 +128,11 @@ function enableGameButtons() {
 }
 
 function finalMessage() {
-  let messageTitle;
+  const messageTitle = `Player: ${playerScoreCount} Computer: ${computerScoreCount}`;
   let message;
   if (playerScoreCount > computerScoreCount) {
-    messageTitle = `Player: ${playerScoreCount} Computer: ${computerScoreCount}`;
     message = 'You are the overall winner!';
   } else if (computerScoreCount > playerScoreCount) {
-    messageTitle = `Player: ${playerScoreCount} Computer: ${computerScoreCount}`;
     message = 'Sorry, the computer win this time.';
   }
   showModal(messageTitle, message);
